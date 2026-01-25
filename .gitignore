@@ -12,6 +12,11 @@ wheels/
 .vscode/
 
 # Data files
-data/*.jsonl
+data/*
 logs/
 *.log
+outputs/*
+
+# Unsloth files
+unsloth_compiled_cache/
+unsloth_cache/

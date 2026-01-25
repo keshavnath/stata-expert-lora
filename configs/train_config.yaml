@@ -1,0 +1,32 @@
+# Unsloth QLoRA training config (template)
+model:
+  base_model: Qwen/Qwen2.5-Coder-1.5B-Instruct
+  lora_rank: 32
+  lora_alpha: 32
+  lora_dropout: 0
+  q_bits: 4
+
+data:
+  train_path: data/unsloth/train.jsonl
+  val_path: data/unsloth/val.jsonl
+  max_length: 512
+
+training:
+  epochs: 3
+  max_steps: 100
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  lr: 2e-4
+  weight_decay: 0.01
+  fp16: true
+  optim: paged_adamw_8bit
+  logging_steps: 50
+  save_steps: 50
+  save_total_limit: 3
+
+environment:
+  device: cuda
+  num_workers: 1
+
+output:
+  out_dir: outputs/stata_lora_adapter
