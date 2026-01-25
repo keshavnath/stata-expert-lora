@@ -1,0 +1,7 @@
+{"instruction": "Display the standard error of the coefficient on length from the last model.", "input": "", "output": "display _se[length]"}
+{"instruction": "Restore previously stored estimation results named est1 as the active e-class results.", "input": "", "output": "estimates restore est1"}
+{"instruction": "Turn on tracing to debug program execution; use set trace off to disable.", "input": "", "output": "set trace on"}
+{"instruction": "Rename rep78 to repairRecord and foreign to carType in one command.", "input": "", "output": "rename (rep78 foreign) (repairRecord carType)"}
+{"instruction": "Create a double-precision variable resid containing residuals from the last fitted model.", "input": "", "output": "predict double resid, residuals"}
+{"instruction": "Compute 99% confidence intervals for the means of mpg and price.", "input": "", "output": "ci mean mpg price, level(99)"}
+{"instruction": "Perform a many-to-one merge of hh2.dta  into the current dataset keyed by hid.", "input": "", "output": "merge m:1 hid using \"hh2.dta\""}

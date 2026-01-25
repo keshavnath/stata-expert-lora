@@ -1,0 +1,153 @@
+{"instruction": "Load Stata's built-in auto dataset into memory, replacing any existing data.", "input": "", "output": "sysuse auto, clear"}
+{"instruction": "Import a CSV file named myfile.csv  and replace any data currently in memory.", "input": "", "output": "import delimited \"myfile.csv\", clear"}
+{"instruction": "Load a Stata .dta file called myData.dta  into memory, replacing existing data.", "input": "", "output": "use \"myData.dta\", clear"}
+{"instruction": "Display variable names, types, formats, and labels for the dataset in memory.", "input": "", "output": "describe"}
+{"instruction": "Show mean, standard deviation, min, and max for variables price and mpg.", "input": "", "output": "summarize price mpg"}
+{"instruction": "Provide detailed univariate statistics for price, including percentiles and kurtosis.", "input": "", "output": "summarize price, detail"}
+{"instruction": "Show variable types, labels, unique values, and summary statistics for make and price.", "input": "", "output": "codebook make price"}
+{"instruction": "Display a quick view of mpg distribution and number of missing or zero values.", "input": "", "output": "inspect mpg"}
+{"instruction": "Produce a one-way frequency table for rep78 including missing values.", "input": "", "output": "tabulate rep78, missing"}
+{"instruction": "Create a two-way table of foreign by rep78 and report chi-square and expected counts.", "input": "", "output": "tabulate foreign rep78, chi2 expected"}
+{"instruction": "Count observations where price is greater than 5000.", "input": "", "output": "count if price > 5000"}
+{"instruction": "List make and price for observations with price over 10,000 and nonmissing price.", "input": "", "output": "list make price if price > 10000 & !missing(price)"}
+{"instruction": "Open the Data Editor to view and edit the dataset interactively.", "input": "", "output": "browse"}
+{"instruction": "Sort the dataset descending by price then descending by mpg.", "input": "", "output": "gsort -price -mpg"}
+{"instruction": "Create a new variable mpgSq equal to mpg squared.", "input": "", "output": "generate mpgSq = mpg^2"}
+{"instruction": "Create a byte (0/1) indicator lowPr equal to 1 when price is less than 4000.", "input": "", "output": "gen byte lowPr = price < 4000"}
+{"instruction": "Replace price values below 5000 with 5000.", "input": "", "output": "replace price = 5000 if price < 5000"}
+{"instruction": "Compute group mean of price for each value of foreign and store in meanPrice.", "input": "", "output": "egen meanPrice = mean(price), by(foreign)"}
+{"instruction": "Create mpgQuartile containing quartile group (1–4) of mpg.", "input": "", "output": "pctile mpgQuartile = mpg, nq(4)"}
+{"instruction": "Store the distinct values of rep78 in a local macro called levels.", "input": "", "output": "levelsof rep78, local(levels)"}
+{"instruction": "Define a local macro myLocal containing the variable names price, mpg, and length.", "input": "", "output": "local myLocal price mpg length"}
+{"instruction": "Define a global macro pathdata pointing to a directory for reuse across the session.", "input": "", "output": "global pathdata \"C:/Data/Stata\""}
+{"instruction": "Create a temporary filename myAuto for saving data within a program or do-file.", "input": "", "output": "tempfile myAuto"}
+{"instruction": "Create a temporary variable name temp1 for use within a program or loop.", "input": "", "output": "tempvar temp1"}
+{"instruction": "Save a temporary copy of the current dataset so you can restore it later.", "input": "", "output": "preserve"}
+{"instruction": "Restore the dataset saved by the most recent preserve command.", "input": "", "output": "restore"}
+{"instruction": "Save the dataset in memory to myData.dta, overwriting any existing file.", "input": "", "output": "save \"myData.dta\", replace"}
+{"instruction": "Save dataset in Stata 12 format to ensure compatibility with older Stata versions.", "input": "", "output": "saveold \"myData.dta\", replace version(12)"}
+{"instruction": "Export the dataset to a comma-delimited CSV file, replacing if it exists.", "input": "", "output": "export delimited \"myData.csv\", delimiter(\",\") replace"}
+{"instruction": "Export data to Excel with variable names in the first row, replacing existing file.", "input": "", "output": "export excel \"myData.xlsx\", firstrow(variables) replace"}
+{"instruction": "Import Sheet1 from an Excel file using the first row as variable names and clear memory first.", "input": "", "output": "import excel \"sheet.xlsx\", sheet(\"Sheet1\") firstrow clear"}
+{"instruction": "Convert string variable foreignString to numeric and store result in foreignNumeric.", "input": "", "output": "destring foreignString, gen(foreignNumeric)"}
+{"instruction": "Encode a string categorical variable into numeric codes with value labels in foreignNumeric.", "input": "", "output": "encode foreignString, gen(foreignNumeric)"}
+{"instruction": "Create a string variable foreignString from numeric variable foreign using value labels.", "input": "", "output": "decode foreign, gen(foreignString)"}
+{"instruction": "Convert numeric variable foreign to a string variable foreignString.", "input": "", "output": "tostring foreign, gen(foreignString)"}
+{"instruction": "Change the storage type of mpg to double precision.", "input": "", "output": "recast double mpg"}
+{"instruction": "Reduce memory usage by converting variables to the smallest appropriate storage types.", "input": "", "output": "compress"}
+{"instruction": "Replace missing values in all variables with the numeric code 9999 (useful for export).", "input": "", "output": "mvencode _all, mv(9999)"}
+{"instruction": "Convert the numeric code 9999 back to missing for all variables.", "input": "", "output": "mvdecode _all, mv(9999)"}
+{"instruction": "Rename rep78 to repairRecord and foreign to carType in one command.", "input": "", "output": "rename (rep78 foreign) (repairRecord carType)"}
+{"instruction": "Define a value label named myLabel mapping 0 to \"US\" and 1 to \"Not US\".", "input": "", "output": "label define myLabel 0 \"US\" 1 \"Not US\""}
+{"instruction": "Attach the value label myLabel to the numeric variable foreign.", "input": "", "output": "label values foreign myLabel"}
+{"instruction": "Set the display format of price to show two decimal places in a width of 9.", "input": "", "output": "format price %9.2f"}
+{"instruction": "Verify that price contains no missing values; Stata will throw an error if the assertion fails.", "input": "", "output": "assert price != ."}
+{"instruction": "Report duplicate observations across all variables in the dataset.", "input": "", "output": "duplicates report"}
+{"instruction": "Check whether id uniquely identifies observations; returns an error if not unique.", "input": "", "output": "isid id"}
+{"instruction": "Count observations with nonmissing values of price.", "input": "", "output": "count if !missing(price)"}
+{"instruction": "Report selected summary statistics for price and mpg by groups defined by foreign.", "input": "", "output": "tabstat price mpg, statistics(mean sd min max) by(foreign)"}
+{"instruction": "Estimate means and standard errors for price and mpg (e-class results not produced).", "input": "", "output": "mean price mpg"}
+{"instruction": "Compute 99% confidence intervals for the means of mpg and price.", "input": "", "output": "ci mean mpg price, level(99)"}
+{"instruction": "Compute pairwise correlations among price, mpg, and weight and mark significant correlations at 5%.", "input": "", "output": "pwcorr price mpg weight, star(0.05)"}
+{"instruction": "Return the correlation matrix for mpg and price.", "input": "", "output": "correlate mpg price"}
+{"instruction": "Create a scatterplot of mpg vs weight and label points with the make variable.", "input": "", "output": "scatter mpg weight, mlabel(make)"}
+{"instruction": "Draw a histogram of mpg with bin width 5, show frequencies, and overlay a kernel density.", "input": "", "output": "histogram mpg, width(5) freq kdensity"}
+{"instruction": "Plot a kernel density estimate of mpg using bandwidth 3.", "input": "", "output": "kdensity mpg, bwidth(3)"}
+{"instruction": "Create boxplots of price separately for each value of foreign.", "input": "", "output": "graph box price, over(foreign)"}
+{"instruction": "Create a bar chart showing mean price for each category of foreign.", "input": "", "output": "graph bar (mean) price, over(foreign)"}
+{"instruction": "Overlay a scatterplot of mpg vs weight with a linear fit line.", "input": "", "output": "twoway (scatter mpg weight) (lfit mpg weight)"}
+{"instruction": "Plot a LOWESS smooth of mpg on weight and overlay the raw scatter.", "input": "", "output": "twoway lowess mpg weight || scatter mpg weight"}
+{"instruction": "Plot linear fit with confidence intervals for mpg on weight and overlay the scatter.", "input": "", "output": "twoway lfitci mpg weight || scatter mpg weight"}
+{"instruction": "Create a binned scatterplot of weight vs mpg without a fitted line (requires binscatter package).", "input": "", "output": "binscatter weight mpg, line(none)"}
+{"instruction": "Install the user-written binscatter package from SSC, replacing any existing copy.", "input": "", "output": "ssc install binscatter, replace"}
+{"instruction": "Export the most recent graph to a PNG file named myPlot.png, replacing if it exists.", "input": "", "output": "graph export \"myPlot.png\", as(png) replace"}
+{"instruction": "Save the current graph in Stata's .gph format for later use.", "input": "", "output": "graph save \"myPlot.gph\", replace"}
+{"instruction": "Run OLS regression of price on mpg and weight with robust standard errors.", "input": "", "output": "regress price mpg weight, vce(robust)"}
+{"instruction": "OLS of price on mpg, weight and foreign indicators, clustering SEs by rep78.", "input": "", "output": "regress price mpg weight i.foreign, vce(cluster rep78)"}
+{"instruction": "Generate predicted values yhat for observations used in the last estimation (e-class sample).", "input": "", "output": "predict double yhat if e(sample)"}
+{"instruction": "Create a double-precision variable resid containing residuals from the last fitted model.", "input": "", "output": "predict double resid, residuals"}
+{"instruction": "Perform the Breusch-Pagan/Cook-Weisberg test for heteroskedasticity after regression.", "input": "", "output": "estat hettest"}
+{"instruction": "Report variance inflation factors to assess multicollinearity after regression.", "input": "", "output": "vif"}
+{"instruction": "Run Ramsey's RESET test for omitted-variable bias after a regression.", "input": "", "output": "ovtest"}
+{"instruction": "Compute DFBETA influence measures for the most recent regression model.", "input": "", "output": "dfbeta"}
+{"instruction": "Plot residuals versus fitted values with a horizontal line at zero for diagnostic checking.", "input": "", "output": "rvfplot, yline(0)"}
+{"instruction": "Produce added-variable (partial regression) plots for each regressor in the last model.", "input": "", "output": "avplots"}
+{"instruction": "Estimate the linear combination headroom minus length and its standard error after regression.", "input": "", "output": "lincom headroom - length"}
+{"instruction": "Test the null hypothesis that the coefficient on headroom equals zero.", "input": "", "output": "test headroom = 0"}
+{"instruction": "Compute the marginal effect (derivative) of length from the most recent model.", "input": "", "output": "margins, dydx(length)"}
+{"instruction": "Estimate the elasticity of the outcome with respect to length from the last model.", "input": "", "output": "margins, eyex(length)"}
+{"instruction": "Compute predicted outcomes at specified values of weight using the last estimation results.", "input": "", "output": "margins, at(weight=(2000 3000 4000))"}
+{"instruction": "Plot margins computed by margins, suppressing confidence intervals.", "input": "", "output": "marginsplot, noci"}
+{"instruction": "Bootstrap the regression of mpg on weight with 100 replications to obtain bootstrap SEs.", "input": "", "output": "bootstrap, reps(100): regress mpg weight"}
+{"instruction": "Compute jackknife standard error for the sample mean of mpg.", "input": "", "output": "jackknife r(mean): sum mpg"}
+{"instruction": "Run robust regression to reduce influence of outliers and generate weights in reg_wt.", "input": "", "output": "rreg price mpg weight, genwt(reg_wt)"}
+{"instruction": "Two-stage least squares: instrument mpg with gear when regressing price on mpg and weight.", "input": "", "output": "ivregress 2sls price (mpg = gear) weight"}
+{"instruction": "Install the user-written ivreg2 package (commonly used for IV estimation) from SSC.", "input": "", "output": "ssc install ivreg2, replace"}
+{"instruction": "Run principal components analysis on price, mpg, and weight and keep three components.", "input": "", "output": "pca price mpg weight, components(3)"}
+{"instruction": "Perform factor analysis extracting two factors from price, mpg, and weight.", "input": "", "output": "factor price mpg weight, factors(2)"}
+{"instruction": "Estimate a Poisson regression for countvar on x1 and x2 with robust standard errors.", "input": "", "output": "poisson countvar x1 x2, vce(robust)"}
+{"instruction": "Estimate a negative binomial regression for countvar on x1 and x2.", "input": "", "output": "nbreg countvar x1 x2"}
+{"instruction": "Estimate a Tobit model for y censored below at 0 with regressors x1 and x2.", "input": "", "output": "tobit y x1 x2, ll(0)"}
+{"instruction": "Estimate logistic regression of foreign on headroom and mpg and report odds ratios.", "input": "", "output": "logit foreign headroom mpg, or"}
+{"instruction": "Estimate a probit model for foreign with robust standard errors.", "input": "", "output": "probit foreign headroom mpg, vce(robust)"}
+{"instruction": "Perform a one-sample test of proportion that the mean of foreign equals 0.5.", "input": "", "output": "prtest foreign == 0.5"}
+{"instruction": "Conduct a two-sample t-test comparing mpg means across values of foreign.", "input": "", "output": "ttest mpg, by(foreign)"}
+{"instruction": "Perform a Wilcoxon rank-sum test for mpg between groups defined by foreign (nonparametric).", "input": "", "output": "ranksum mpg, by(foreign)"}
+{"instruction": "Run a Kolmogorov–Smirnov test comparing mpg distributions by foreign with exact p-value.", "input": "", "output": "ksmirnov mpg, by(foreign) exact"}
+{"instruction": "Perform one-way ANOVA of systolic by drug treatment groups.", "input": "", "output": "anova systolic drug"}
+{"instruction": "Estimate pairwise mean comparisons of mpg across rep78 with Tukey multiple-comparison adjustment.", "input": "", "output": "pwmean mpg, over(rep78) pveffects mcompare(tukey)"}
+{"instruction": "Declare survey design with primary sampling unit psuid, probability weights finalwgt, and strata stratid.", "input": "", "output": "svyset psuid [pweight=finalwgt], strata(stratid)"}
+{"instruction": "Estimate survey-weighted mean of age for each sex using the declared survey design.", "input": "", "output": "svy: mean age, over(sex)"}
+{"instruction": "Estimate a survey-weighted regression of zinc on age (with quadratic), female, weight, and rural.", "input": "", "output": "svy: reg zinc c.age##c.age  female weight rural"}
+{"instruction": "Declare survival-time data with studytime as time variable and died as failure indicator.", "input": "", "output": "stset studytime, failure(died)"}
+{"instruction": "Summarize survival-time data (e.g., number of failures, total time at risk).", "input": "", "output": "stsum"}
+{"instruction": "Fit a Cox proportional hazards model of survival on drug and age.", "input": "", "output": "stcox drug age"}
+{"instruction": "Declare the dataset as time-series with time variable time and yearly frequency.", "input": "", "output": "tsset time, yearly"}
+{"instruction": "Plot a time-series line of the variable spot.", "input": "", "output": "tsline spot"}
+{"instruction": "Create a new variable lag_spot equal to the one-period lag of spot (after tsset/xtset).", "input": "", "output": "generate lag_spot = L1.spot"}
+{"instruction": "Fit an ARIMA model for spot with autoregressive lags 1 and 2.", "input": "", "output": "arima spot, ar(1/2)"}
+{"instruction": "Declare panel (longitudinal) data with panel id and time variable year.", "input": "", "output": "xtset id year"}
+{"instruction": "Report panel data structure details (number of panels, time periods, gaps).", "input": "", "output": "xtdescribe"}
+{"instruction": "Summarize hours decomposing variance into between and within components for panel data.", "input": "", "output": "xtsum hours"}
+{"instruction": "Fit a fixed-effects panel regression of ln_w on age (with quadratic) and ttl_exp with robust SEs.", "input": "", "output": "xtreg ln_w c.age##c.age  ttl_exp, fe vce(robust)"}
+{"instruction": "Plot panel line plots of ln_wage for panels with id up to 22 and label every third tick.", "input": "", "output": "xtline ln_wage if id <= 22, tlabel(#3)"}
+{"instruction": "Estimate a random-effects panel regression of price on mpg and weight.", "input": "", "output": "xtreg price mpg weight, re"}
+{"instruction": "Estimate a dynamic panel model using Arellano-Bond style GMM (xtabond) with lag instruments.", "input": "", "output": "xtabond y L.y x1 x2, lags(1)"}
+{"instruction": "Estimate average treatment effects using propensity-score matching for outcome y and covariates x1 x2.", "input": "", "output": "teffects psmatch (y) (x1 x2)"}
+{"instruction": "Estimate difference-in-differences effect of treatment on y with group and time identifiers.", "input": "", "output": "didregress (y) (treatment), group(id) time(year)"}
+{"instruction": "Run synthetic control analysis for treated unit 1 with treatment starting in 2000 (requires synth package).", "input": "", "output": "synth outcome treatedvar predictors(...), trunit(1) trperiod(2000)"}
+{"instruction": "Perform Blinder–Oaxaca decomposition of wage differences by group (requires oaxaca package).", "input": "", "output": "oaxaca wage, by(group)"}
+{"instruction": "Merge the dataset ind_age.dta one-to-one on id into the current dataset and create _merge indicator.", "input": "", "output": "merge 1:1 id using \"ind_age.dta\""}
+{"instruction": "Append observations from coffeeMaize2.dta  and create filenum to track source file.", "input": "", "output": "append using \"coffeeMaize2.dta\", gen(filenum)"}
+{"instruction": "Convert wide-format variables coffee* and maize* into long format with id country and time year.", "input": "", "output": "reshape long coffee maize, i(country) j(year)"}
+{"instruction": "Convert long-format coffee and maize variables into wide format with year appended to names.", "input": "", "output": "reshape wide coffee maize, i(country) j(year)"}
+{"instruction": "Perform a many-to-one merge of hh2.dta  into the current dataset keyed by hid.", "input": "", "output": "merge m:1 hid using \"hh2.dta\""}
+{"instruction": "Perform probabilistic (fuzzy) matching between datasets using reclink and generate similarity score (requires reclink package).", "input": "", "output": "reclink id name using \"other.dta\", idmaster(id) idusing(id2) gen(score)"}
+{"instruction": "Create a new Stata frame named newdata to hold a separate dataset in memory (Stata frames feature).", "input": "", "output": "frame create newdata"}
+{"instruction": "Switch the active frame to newdata so subsequent commands operate on it.", "input": "", "output": "frame change newdata"}
+{"instruction": "Prepare to write results to an Excel file named results.xlsx, replacing any existing file (used with putexcel commands).", "input": "", "output": "putexcel set \"results.xlsx\", replace"}
+{"instruction": "Export a collected table (from collect) to an HTML file named table1.html.", "input": "", "output": "collect export table1.html"}
+{"instruction": "Export a comparison table of stored estimates est1 and est2 to a text file with significance stars.", "input": "", "output": "etable, estimates(est1 est2) column(index) showstars export(autoreg.txt)"}
+{"instruction": "Store the most recent estimation results in memory under the name est1 for later comparison.", "input": "", "output": "estimates store est1"}
+{"instruction": "Restore previously stored estimation results named est1 as the active e-class results.", "input": "", "output": "estimates restore est1"}
+{"instruction": "List the variance-covariance matrix of estimators (e(V)) from the most recent estimation.", "input": "", "output": "matrix list e(V)"}
+{"instruction": "Create a 3x1 matrix b with elements 4, 5, and 6.", "input": "", "output": "matrix b = (4\\5\\6)"}
+{"instruction": "Create a scalar named a1 with numeric value 3.", "input": "", "output": "scalar a1 = 3"}
+{"instruction": "Display the coefficient estimate for variable length from the most recent regression.", "input": "", "output": "display _b[length]"}
+{"instruction": "Display the standard error of the coefficient on length from the last model.", "input": "", "output": "display _se[length]"}
+{"instruction": "Close any open log file, suppressing errors if no log is open (capture prevents error messages).", "input": "", "output": "capture log close"}
+{"instruction": "Start logging the session output to myDoFile.txt, replacing any existing file.", "input": "", "output": "log using \"myDoFile.txt\", replace"}
+{"instruction": "Set the random-number seed to 12345 for reproducible sampling and bootstrap results.", "input": "", "output": "set seed 12345"}
+{"instruction": "Randomly sample 25 percent of observations from the dataset (use set seed for reproducibility).", "input": "", "output": "sample 25"}
+{"instruction": "Loop over variables mpg, weight, and length and run summarize for each.", "input": "", "output": "foreach x of varlist mpg weight length { summarize x' }"}
+{"instruction": "Loop with numeric iterator i from 1 to 10 and display each value.", "input": "", "output": "forvalues i = 1(1)10 { displayi' }"}
+{"instruction": "Run a while loop that displays i and increments it until i exceeds 10.", "input": "", "output": "while i' <= 10 { displayi' ; local i = i' + 1 }"}
+{"instruction": "Print the number of observations in the dataset using display and the system macro _N.", "input": "", "output": "display \"Number of obs = \" _N"}
+{"instruction": "Store the distinct values of car_make in a local macro named cmake for later iteration.", "input": "", "output": "levelsof car_make, local(cmake)"}
+{"instruction": "Iterate over the local macro cmake and display each element.", "input": "", "output": "foreach x of local cmake { display \"x'\" }"}
+{"instruction": "Silently drop a program named myprog if it exists, avoiding an error if it does not.", "input": "", "output": "capture program drop myprog"}
+{"instruction": "Turn on tracing to debug program execution; use set trace off to disable.", "input": "", "output": "set trace on"}
+{"instruction": "Open Stata's help file for the regress command to view syntax and options.", "input": "", "output": "help regress"}
+{"instruction": "Search SSC and Stata resources for the package or command named mdesc.", "input": "", "output": "search mdesc"}
+{"instruction": "Install the adolist package from SSC to list user-written ado-files.", "input": "", "output": "ssc install adolist"}
+{"instruction": "Update installed user-written ado-files to their latest versions from SSC.", "input": "", "output": "adoupdate"}

@@ -12,11 +12,11 @@ wheels/
 .vscode/
 
 # Data files
-data/*
+# data/*
 logs/
 *.log
 outputs/stata_lora_adapter/
-outputs/inference/
+# outputs/inference/
 
 # Unsloth files
 unsloth_compiled_cache/

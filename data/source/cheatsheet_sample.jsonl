@@ -1,0 +1,10 @@
+{"code":"sysuse auto, clear","explanation":"Load Stata's built-in auto dataset into memory, replacing any existing data."}
+{"code":"import delimited \"myfile.csv\", clear","explanation":"Import a CSV file named myfile.csv  and replace any data currently in memory."}
+{"code":"use \"myData.dta\", clear","explanation":"Load a Stata .dta file called myData.dta  into memory, replacing existing data."}
+{"code":"describe","explanation":"Display variable names, types, formats, and labels for the dataset in memory."}
+{"code":"summarize price mpg","explanation":"Show mean, standard deviation, min, and max for variables price and mpg."}
+{"code":"summarize price, detail","explanation":"Provide detailed univariate statistics for price, including percentiles and kurtosis."}
+{"code":"codebook make price","explanation":"Show variable types, labels, unique values, and summary statistics for make and price."}
+{"code":"inspect mpg","explanation":"Display a quick view of mpg distribution and number of missing or zero values."}
+{"code":"tabulate rep78, missing","explanation":"Produce a one-way frequency table for rep78 including missing values."}
+{"code":"tabulate foreign rep78, chi2 expected","explanation":"Create a two-way table of foreign by rep78 and report chi-square and expected counts."}
