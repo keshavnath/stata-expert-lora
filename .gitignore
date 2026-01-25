@@ -15,7 +15,8 @@ wheels/
 data/*
 logs/
 *.log
-outputs/*
+outputs/stata_lora_adapter/
+outputs/inference/
 
 # Unsloth files
 unsloth_compiled_cache/
