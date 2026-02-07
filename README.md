@@ -1,6 +1,7 @@
 ### Stata-Expert-LoRA
 
 Compact, technical repository for synthesizing STATA-focused prompts, QLoRA-style LoRA fine-tuning, low-VRAM inference, and LLM-based evaluation.
+The fine-tuned model is available on the Hugging Face Hub: [keshavnath/Qwen2.5-STATA](https://huggingface.co/keshavnath/Qwen2.5-STATA)
 
 ---
 
