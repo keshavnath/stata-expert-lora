@@ -1,6 +1,3 @@
-
-
-
 import argparse
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -41,5 +38,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
