@@ -1,3 +1,12 @@
+---
+library_name: transformers
+tags:
+- code
+- stata
+base_model:
+- Qwen/Qwen2.5-Coder-1.5B-Instruct
+pipeline_tag: text-generation
+---
 
 # Model Card for keshavnath/Qwen2.5-STATA (STATA-Expert-LoRA)
 
