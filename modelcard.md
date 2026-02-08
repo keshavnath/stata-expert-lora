@@ -6,6 +6,8 @@ tags:
 base_model:
 - Qwen/Qwen2.5-Coder-1.5B-Instruct
 pipeline_tag: text-generation
+datasets:
+  - keshavnath/stata-code-explanations
 ---
 
 # Model Card for keshavnath/Qwen2.5-STATA (STATA-Expert-LoRA)
@@ -75,7 +77,7 @@ print(decoded_output)
 
 ### Training Data
 
-The model was trained on a dataset derived from Stata command examples, formatted in the Alpaca instruction-following style.
+The model was trained on a dataset derived from Stata command examples, formatted in the Alpaca instruction-following style. The dataset is available on the Hugging Face Hub: [keshavnath/stata-code-instructions](https://huggingface.co/datasets/keshavnath/stata-code-instructions).
 
 ### Training Procedure
 

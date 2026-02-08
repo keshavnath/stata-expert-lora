@@ -4,6 +4,8 @@ Compact, technical repository for synthesizing STATA-focused prompts, QLoRA-styl
 
 The fine-tuned model is available on the Hugging Face Hub: [keshavnath/Qwen2.5-STATA](https://huggingface.co/keshavnath/Qwen2.5-STATA)
 
+The dataset used for fine-tuning is also available: [keshavnath/stata-code-instructions](https://huggingface.co/datasets/keshavnath/stata-code-instructions)
+
 ---
 
 ### What this repo contains
